@@ -1,3 +1,7 @@
+output "stream_analytics_output_servicebus_queues_id" {
+  description = "Map of id values across all stream_analytics_output_servicebus_queues, keyed the same as var.stream_analytics_output_servicebus_queues"
+  value       = { for k, v in azurerm_stream_analytics_output_servicebus_queue.stream_analytics_output_servicebus_queues : k => v.id }
+}
 output "stream_analytics_output_servicebus_queues_authentication_mode" {
   description = "Map of authentication_mode values across all stream_analytics_output_servicebus_queues, keyed the same as var.stream_analytics_output_servicebus_queues"
   value       = { for k, v in azurerm_stream_analytics_output_servicebus_queue.stream_analytics_output_servicebus_queues : k => v.authentication_mode }
