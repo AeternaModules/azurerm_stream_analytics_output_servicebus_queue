@@ -24,7 +24,7 @@ output "stream_analytics_output_servicebus_queues_resource_group_name" {
 }
 output "stream_analytics_output_servicebus_queues_serialization" {
   description = "Map of serialization values across all stream_analytics_output_servicebus_queues, keyed the same as var.stream_analytics_output_servicebus_queues"
-  value       = { for k, v in azurerm_stream_analytics_output_servicebus_queue.stream_analytics_output_servicebus_queues : k => v.serialization if v.serialization != null && length(v.serialization) > 0 }
+  value       = { for k, v in azurerm_stream_analytics_output_servicebus_queue.stream_analytics_output_servicebus_queues : k => one(v.serialization) if v.serialization != null && length(v.serialization) > 0 }
 }
 output "stream_analytics_output_servicebus_queues_servicebus_namespace" {
   description = "Map of servicebus_namespace values across all stream_analytics_output_servicebus_queues, keyed the same as var.stream_analytics_output_servicebus_queues"
